@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>전산 일일 점검 도우미</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 상단 헤더 및 입력 영역 -->
+        <header class="app-header">
+            <h1>전산 일일 점검 도우미</h1>
+            <div class="controls">
+                <div class="control-group">
+                    <label for="check-date">점검일</label>
+                    <input type="date" id="check-date">
+                </div>
+                <div class="control-group">
+                    <label for="inspector-name">점검자</label>
+                    <input type="text" id="inspector-name" placeholder="이름 입력">
+                </div>
+                <div class="button-group">
+                    <button id="btn-save" class="btn primary">저장</button>
+                    <button id="btn-csv" class="btn secondary">CSV</button>
+                    <button id="btn-print" class="btn secondary">인쇄</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- 메시지 알림 영역 (alert 대체용) -->
+        <div id="app-message" class="app-message hidden"></div>
+
+        <!-- 메인 대시보드 그리드 영역 -->
+        <main class="dashboard-grid">
+            <!-- 왼쪽: 점검 항목 영역 -->
+            <section class="card inspection-section">
+                <h2>점검 항목</h2>
+                <div id="inspection-items" class="inspection-container">
+                    <!-- JavaScript로 동적 렌더링 -->
+                </div>
+            </section>
+
+            <!-- 오른쪽: 요약 및 이력 영역 -->
+            <div class="right-column">
+                <section class="card summary-section">
+                    <h2>오늘 요약</h2>
+                    <div id="today-summary" class="summary-container">
+                        <!-- 요약 카드 4개 -->
+                        <div class="summary-cards">
+                            <div class="summary-card">
+                                <span class="card-label">전체 항목</span>
+                                <span id="stat-total" class="card-value">0</span>
+                            </div>
+                            <div class="summary-card success">
+                                <span class="card-label">정상</span>
+                                <span id="stat-ok" class="card-value">0</span>
+                            </div>
+                            <div class="summary-card warn">
+                                <span class="card-label">주의</span>
+                                <span id="stat-warn" class="card-value">0</span>
+                            </div>
+                            <div class="summary-card danger">
+                                <span class="card-label">이상</span>
+                                <span id="stat-fail" class="card-value">0</span>
+                            </div>
+                        </div>
+
+                        <!-- 최근 7일 정상률 막대 그래프 -->
+                        <div class="summary-block">
+                            <h3>최근 7일 정상률</h3>
+                            <div id="weekly-rate-container" class="weekly-rate-container">
+                                <!-- JavaScript로 렌더링 -->
+                            </div>
+                        </div>
+
+                        <!-- 이상·주의 항목 목록 -->
+                        <div class="summary-block">
+                            <h3>이상·주의 항목 목록</h3>
+                            <div id="issues-list-container" class="issues-list-container">
+                                <!-- JavaScript로 렌더링 -->
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="card history-section">
+                    <h2>점검 이력</h2>
+                    <div id="inspection-history" class="history-container">
+                        <!-- JavaScript로 동적 렌더링 -->
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

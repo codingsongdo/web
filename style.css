@@ -1,0 +1,666 @@
+/* CSS 초기화 및 변수 설정 */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --bg-color: #0f172a;
+    --card-bg: #1e293b;
+    --border-color: #334155;
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --accent-color: #3b82f6;
+    --accent-hover: #2563eb;
+    --danger-color: #ef4444;
+    --warn-color: #f59e0b;
+    --success-color: #22c55e;
+}
+
+body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    line-height: 1.5;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* 상단 헤더 영역 */
+.app-header {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.app-header h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: flex-end;
+}
+
+.control-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.control-group label {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.control-group input {
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 0.95rem;
+}
+
+.button-group {
+    display: flex;
+    gap: 8px;
+}
+
+.btn {
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+    font-size: 0.95rem;
+    transition: background-color 0.2s;
+}
+
+.btn.primary {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+.btn.primary:hover {
+    background-color: var(--accent-hover);
+}
+
+.btn.secondary {
+    background-color: var(--border-color);
+    color: var(--text-primary);
+}
+
+.btn.secondary:hover {
+    background-color: #475569;
+}
+
+/* 메시지 알림 영역 */
+.app-message {
+    padding: 12px 16px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: opacity 0.3s ease;
+}
+
+.app-message.hidden {
+    display: none;
+}
+
+.app-message.error {
+    background-color: rgba(239, 68, 68, 0.15);
+    border: 1px solid var(--danger-color);
+    color: #fca5a5;
+}
+
+.app-message.success {
+    background-color: rgba(34, 197, 94, 0.15);
+    border: 1px solid var(--success-color);
+    color: #86efac;
+}
+
+/* 메인 대시보드 레이아웃 */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.card h2 {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 10px;
+}
+
+.right-column {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* 점검 항목 스타일 */
+.inspection-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-height: 650px;
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+.category-group {
+    background-color: rgba(15, 23, 42, 0.4);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 12px;
+}
+
+.category-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--accent-color);
+    margin-bottom: 10px;
+    border-bottom: 1px dashed var(--border-color);
+    padding-bottom: 4px;
+}
+
+.item-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.item-row {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 10px;
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    border-left: 4px solid var(--border-color);
+    transition: border-left-color 0.2s, background-color 0.2s;
+}
+
+.item-row.status-fail {
+    border-left-color: var(--danger-color);
+    background-color: rgba(239, 68, 68, 0.05);
+}
+
+.item-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.item-name {
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.status-radios {
+    display: flex;
+    gap: 12px;
+    font-size: 0.85rem;
+}
+
+.status-radios label {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+}
+
+.item-memo {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    padding: 6px 10px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    width: 100%;
+}
+
+.item-memo:focus {
+    outline: none;
+    border-color: var(--accent-color);
+}
+
+/* 오늘 요약 영역 스타일 */
+.summary-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-height: 320px;
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+.summary-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.summary-card {
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+}
+
+.summary-card.success { border-color: var(--success-color); }
+.summary-card.warn { border-color: var(--warn-color); }
+.summary-card.danger { border-color: var(--danger-color); }
+
+.card-label {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+}
+
+.card-value {
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.summary-block {
+    background-color: rgba(15, 23, 42, 0.4);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 12px;
+}
+
+.summary-block h3 {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+/* 최근 7일 정상률 막대 그래프 */
+.weekly-rate-container {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.weekly-bar-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.8rem;
+}
+
+.weekly-date {
+    width: 75px;
+    color: var(--text-secondary);
+    flex-shrink: 0;
+}
+
+.weekly-bar-bg {
+    flex-grow: 1;
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    height: 14px;
+    overflow: hidden;
+    position: relative;
+}
+
+.weekly-bar-fill {
+    background-color: var(--success-color);
+    height: 100%;
+    border-radius: 3px;
+    transition: width 0.3s ease;
+}
+
+.weekly-rate-text {
+    width: 45px;
+    text-align: right;
+    font-weight: 600;
+    flex-shrink: 0;
+}
+
+.weekly-no-record {
+    color: var(--text-secondary);
+    font-style: italic;
+    font-size: 0.8rem;
+}
+
+/* 이상·주의 항목 목록 */
+.issues-list-container {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    max-height: 150px;
+    overflow-y: auto;
+}
+
+.issue-item {
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-left: 3px solid var(--warn-color);
+    border-radius: 4px;
+    padding: 8px 10px;
+    font-size: 0.85rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.issue-item.fail {
+    border-left-color: var(--danger-color);
+}
+
+.issue-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.issue-title {
+    font-weight: 600;
+}
+
+.issue-badge {
+    font-size: 0.75rem;
+    padding: 1px 6px;
+    border-radius: 3px;
+    font-weight: 500;
+}
+
+.issue-badge.warn {
+    background-color: rgba(245, 158, 11, 0.2);
+    color: var(--warn-color);
+}
+
+.issue-badge.fail {
+    background-color: rgba(239, 68, 68, 0.2);
+    color: var(--danger-color);
+}
+
+.issue-memo-text {
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+}
+
+.no-issues {
+    color: var(--success-color);
+    font-size: 0.85rem;
+    text-align: center;
+    padding: 8px;
+}
+
+/* 점검 이력 표 스타일 */
+.history-container {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.history-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+    text-align: left;
+}
+
+.history-table th, .history-table td {
+    padding: 8px 10px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.history-table th {
+    background-color: rgba(15, 23, 42, 0.6);
+    color: var(--text-secondary);
+    font-weight: 600;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.history-row {
+    cursor: pointer;
+    transition: background-color 0.15s;
+}
+
+.history-row:hover {
+    background-color: rgba(59, 130, 246, 0.1);
+}
+
+.history-row.has-fail {
+    color: var(--danger-color);
+    font-weight: 500;
+}
+
+.btn-delete {
+    background-color: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    padding: 3px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: all 0.2s;
+}
+
+.btn-delete:hover {
+    background-color: var(--danger-color);
+    color: white;
+    border-color: var(--danger-color);
+}
+
+.history-empty {
+    padding: 20px;
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+/* 인쇄 스타일 (Step 6) */
+@media print {
+    body {
+        background-color: #ffffff !important;
+        color: #000000 !important;
+        padding: 0 !important;
+    }
+
+    .container {
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding: 10px !important;
+    }
+
+    /* 상단 헤더에서 버튼 및 입력 폼 숨기기, 제목/점검일/점검자 정보만 정돈 */
+    .button-group,
+    #btn-save,
+    #btn-csv,
+    #btn-print,
+    .controls input[type="date"],
+    .controls input[type="text"] {
+        display: none !important;
+    }
+
+    .app-header {
+        background-color: #ffffff !important;
+        border: 1px solid #ccc !important;
+        color: #000000 !important;
+        box-shadow: none !important;
+        margin-bottom: 15px !important;
+        padding: 15px !important;
+        display: block !important;
+    }
+
+    .app-header h1 {
+        font-size: 1.4rem !important;
+        margin-bottom: 10px !important;
+    }
+
+    /* 인쇄 시점에 표시할 점검일/점검자 정보 텍스트 (JavaScript로 주입 가능 혹은 헤더 활용) */
+    .controls {
+        display: block !important;
+        font-size: 1rem !important;
+        color: #000000 !important;
+    }
+
+    .control-group {
+        display: inline-block !important;
+        margin-right: 20px !important;
+    }
+
+    .control-group label {
+        color: #333 !important;
+        font-weight: bold;
+    }
+
+    /* 메시지 및 우측 이력 영역 숨기기 */
+    #app-message,
+    .history-section {
+        display: none !important;
+    }
+
+    /* 대시보드 그리드 해제 (1단으로 풀기) */
+    .dashboard-grid {
+        display: block !important;
+    }
+
+    .card {
+        background-color: #ffffff !important;
+        border: 1px solid #ccc !important;
+        color: #000000 !important;
+        box-shadow: none !important;
+        margin-bottom: 20px !important;
+        page-break-inside: avoid;
+    }
+
+    .card h2, .summary-block h3 {
+        color: #000000 !important;
+        border-bottom: 1px solid #ccc !important;
+    }
+
+    .category-group {
+        background-color: #ffffff !important;
+        border: 1px solid #ddd !important;
+        margin-bottom: 10px !important;
+        page-break-inside: avoid;
+    }
+
+    .category-title {
+        color: #000000 !important;
+        border-bottom: 1px dashed #ccc !important;
+    }
+
+    .item-row {
+        background-color: #ffffff !important;
+        border: 1px solid #eee !important;
+        color: #000000 !important;
+        page-break-inside: avoid;
+    }
+
+    .item-row.status-fail {
+        border-left-color: #000 !important;
+        background-color: #fff5f5 !important;
+    }
+
+    .item-memo {
+        background-color: #f9f9f9 !important;
+        border: 1px solid #ddd !important;
+        color: #000 !important;
+    }
+
+    /* 요약 카드 및 블록 인쇄 최적화 */
+    .summary-card {
+        background-color: #f8f9fa !important;
+        border: 1px solid #ddd !important;
+        color: #000 !important;
+    }
+
+    .card-label, .card-value {
+        color: #000 !important;
+    }
+
+    .summary-block {
+        background-color: #ffffff !important;
+        border: 1px solid #ddd !important;
+    }
+
+    .weekly-bar-bg {
+        background-color: #eee !important;
+        border: 1px solid #ccc !important;
+    }
+
+    .weekly-bar-fill {
+        background-color: #333 !important;
+    }
+
+    .issue-item {
+        background-color: #fff !important;
+        border: 1px solid #ccc !important;
+        color: #000 !important;
+    }
+
+    .issue-badge.warn {
+        color: #92400e !important;
+        background-color: #fef3c7 !important;
+    }
+
+    .issue-badge.fail {
+        color: #b91c1c !important;
+        background-color: #fee2e2 !important;
+    }
+}
+
+/* 반응형 디자인 (1000px 이하 대응) */
+@media (max-width: 1000px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .app-header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .button-group {
+        justify-content: flex-end;
+    }
+}
